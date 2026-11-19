@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 14% 92%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 10%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+
+    --chart-1: 221 83% 53%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    --radius: 0.625rem;
+    --radius-sm: calc(0.625rem - 4px);
+    --radius-lg: calc(0.625rem + 4px);
+    --radius-full: 9999px;
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03), 0 1px 3px 0 rgb(0 0 0 / 0.06);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 350ms;
+
+    --sidebar-bg: 224 50% 14%;
+    --sidebar-fg: 220 14% 92%;
+    --sidebar-active: 221 83% 53%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 220 14% 96%;
+
+    --card: 222 40% 12%;
+    --card-foreground: 220 14% 96%;
+
+    --popover: 222 40% 12%;
+    --popover-foreground: 220 14% 96%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 30% 18%;
+    --secondary-foreground: 220 14% 96%;
+
+    --muted: 222 30% 18%;
+    --muted-foreground: 220 9% 59%;
+
+    --accent: 222 30% 18%;
+    --accent-foreground: 220 14% 96%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 222 30% 20%;
+    --input: 222 30% 20%;
+    --ring: 221 83% 53%;
+
+    --chart-1: 221 83% 60%;
+    --chart-2: 160 60% 50%;
+    --chart-3: 30 80% 60%;
+    --chart-4: 280 65% 65%;
+    --chart-5: 340 75% 60%;
+
+    --sidebar-bg: 222 50% 6%;
+    --sidebar-fg: 220 14% 80%;
+    --sidebar-active: 221 83% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(221 83% 53% / 0.08) 0%, hsl(280 65% 60% / 0.06) 50%, hsl(160 60% 45% / 0.05) 100%);
+  }
+
+  .glass-card {
+    @apply bg-[rgba(15,27,45,0.85)] backdrop-blur-xl border border-white/10;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400;
+  }
+
+  .shimmer {
+    @apply animate-pulse bg-muted rounded;
+  }
+
+  .table-row-hover {
+    @apply transition-colors hover:bg-muted/50;
+  }
+
+  .stat-card {
+    @apply relative overflow-hidden;
+  }
+  .stat-card::after {
+    content: '';
+    @apply absolute -top-12 -right-12 w-24 h-24 rounded-full opacity-[0.07];
+    background: hsl(var(--primary));
+  }
+
+  .sidebar-gradient {
+    background: linear-gradient(180deg, hsl(var(--sidebar-bg)) 0%, hsl(224 50% 10%) 100%);
+  }
+  .dark .sidebar-gradient {
+    background: linear-gradient(180deg, hsl(var(--sidebar-bg)) 0%, hsl(222 50% 4%) 100%);
+  }
+
+  .login-bg {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f1b2d 40%, #1a1a2e 70%, #16213e 100%);
+  }
+
+  .input-focus {
+    @apply focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary transition-all duration-200;
+  }
+}
